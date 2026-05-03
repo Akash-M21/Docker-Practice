@@ -87,6 +87,33 @@ docker build -t my-image .
 
 ---
 
+# Docker Run (Create Container)
+
+`docker run` is used to create and start a container from a Docker image.
+
+It performs the following:
+- Creates a container from the image
+- Allocates filesystem
+- Starts the container process
+- Optionally maps ports and volumes
+
+### Syntax:
+```bash
+docker run [OPTIONS] IMAGE
+```
+
+### Example:
+```bash
+docker run -d -p 8080:80 nginx
+```
+
+### Explanation:
+- `-d` → Runs container in detached mode (background)
+- `-p 8080:80` → Maps host port 8080 to container port 80
+- `nginx` → Image name
+
+---
+
 # Dockerfile Instructions
 
 ## 1. FROM
@@ -248,6 +275,7 @@ https://hub.docker.com/_/jenkins/tags
 - Containers are running instances of images  
 - Dockerfile defines how images are built  
 - Docker build automates image creation  
+- Docker run creates and starts containers from images  
 
 ---
 
