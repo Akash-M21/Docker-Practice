@@ -215,4 +215,3 @@ docker stats
 ```
 
 ---
-It allows multiple Docker hosts to work as a single cluster for high availability and scaling (similar to Kubernetes).
