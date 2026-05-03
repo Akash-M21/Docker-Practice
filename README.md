@@ -1,11 +1,10 @@
-
-```markdown
+````markdown
 # Docker Complete Guide
 
 Docker is one of the most widely used containerization platforms in DevOps. It helps package applications and their dependencies into lightweight, portable containers.
 
 ---
-
+````
 # What is Docker?
 
 Docker is a containerisation platform which packages an application and its dependencies together to form a container.  
@@ -15,19 +14,13 @@ It helps in:
 - Easy deployment
 - Faster application delivery
 - Portability across systems
-
----
-
+````
+````
 # Docker Architecture Overview
-
-```
 
 Dockerfile → Docker Image → Docker Container
 (Build)       (Read-only)       (Running instance)
 
-````
-
----
 ````
 ````
 # Docker Images
