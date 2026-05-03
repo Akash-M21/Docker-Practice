@@ -1,4 +1,4 @@
-# Docker Commands Cheat Sheet 🚀
+# Docker Commands Cheat Sheet
 
 This document provides a complete reference of Docker commands, concepts, and real-world usage including images, containers, volumes, networking, and Docker Compose.
 
