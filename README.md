@@ -1,77 +1,111 @@
-# Docker-Practice
-# Docker
 
-Docker is a containerisation platform which packages our application and its dependencies together to form a container.
+```markdown
+# Docker Complete Guide
 
----
-
-## Docker Images
-
-A Docker image is a set of instructions stored in the form of layers.  
-It is **read-only** and does not have any state.
+Docker is one of the most widely used containerization platforms in DevOps. It helps package applications and their dependencies into lightweight, portable containers.
 
 ---
 
-## Docker Container
+# What is Docker?
 
-A Docker container is the runtime instance of an image.  
-It has **read/write access**, can be modified, and its state changes during execution.
+Docker is a containerisation platform which packages an application and its dependencies together to form a container.  
 
----
-
-## Docker Installation (Ubuntu)
-
-Follow the steps below to install Docker on Ubuntu:
-
-1. sudo apt update
-
-2. sudo apt install ca-certificates curl gnupg
-
-3. sudo install -m 0755 -d /etc/apt/keyrings
-
-4. curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-5. sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
-6. echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-7. sudo apt update
-
-8. apt-cache policy docker-ce
-
-9. sudo apt install docker-ce -y
-
-10. sudo systemctl status docker
-
-````markdown
-# Building Docker Images using Dockerfile and Containerizing
-
-## Dockerfile
-
-A **Dockerfile** is a text file that contains instructions for building your source code into a Docker image.
+It helps in:
+- Consistent environments
+- Easy deployment
+- Faster application delivery
+- Portability across systems
 
 ---
 
-## Docker Build
+# Docker Architecture Overview
 
-`docker build` is a simple single command that automatically generates Docker images by reading instructions from a Dockerfile.
+```
 
----
+Dockerfile → Docker Image → Docker Container
+(Build)       (Read-only)       (Running instance)
 
-## Dockerfile Instructions
-
-### 1. FROM
-Defines the base image.
-
-```dockerfile
-FROM tomcat:latest
 ````
 
 ---
 
-### 2. RUN
+# Docker Images
 
-Executes Linux commands inside the image during build time.
+A Docker image is a set of instructions stored in layers.
+
+- Read-only
+- Stateless
+- Used to create containers
+
+---
+
+# Docker Containers
+
+A Docker container is a runtime instance of a Docker image.
+
+- Read/Write access
+- Stateful
+- Can be started, stopped, modified
+
+---
+
+# Docker Installation (Ubuntu)
+
+```bash
+sudo apt update
+
+sudo apt install ca-certificates curl gnupg
+
+sudo install -m 0755 -d /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce
+
+sudo systemctl status docker
+````
+
+---
+
+# Dockerfile
+
+A **Dockerfile** is a text file that contains instructions for building a Docker image.
+
+---
+
+# Docker Build
+
+`docker build` is a command that reads a Dockerfile and automatically generates a Docker image.
+
+```bash
+docker build -t my-image .
+```
+
+---
+
+# Dockerfile Instructions
+
+## 1. FROM
+
+Defines base image.
+
+```dockerfile
+FROM tomcat:latest
+```
+
+---
+
+## 2. RUN
+
+Executes Linux commands during image build.
 
 ```dockerfile
 RUN mkdir folder1
@@ -80,29 +114,29 @@ RUN wget https://github.com
 
 ---
 
-### 3. COPY
+## 3. COPY
 
-Copies files from local system to container.
+Copies files from local machine to container.
 
 ```dockerfile
-COPY src(local) dest(container)
+COPY src/ /app/src/
 ```
 
 ---
 
-### 4. ADD
+## 4. ADD
 
-Copies files or downloads from internet into the container.
+Copies files or downloads from URL into container.
 
 ```dockerfile
-ADD https://github.com
+ADD https://github.com/file.tar.gz /app/
 ```
 
 ---
 
-### 5. WORKDIR
+## 5. WORKDIR
 
-Sets the working directory inside the container.
+Sets working directory inside container.
 
 ```dockerfile
 WORKDIR /app
@@ -110,9 +144,9 @@ WORKDIR /app
 
 ---
 
-### 6. EXPOSE
+## 6. EXPOSE
 
-Specifies the port the container will listen on.
+Declares container port.
 
 ```dockerfile
 EXPOSE 8000
@@ -120,9 +154,9 @@ EXPOSE 8000
 
 ---
 
-### 7. USER
+## 7. USER
 
-Switches between users inside the container.
+Switches container user.
 
 ```dockerfile
 USER root
@@ -130,7 +164,7 @@ USER root
 
 ---
 
-### 8. ENV
+## 8. ENV
 
 Sets environment variables.
 
@@ -140,7 +174,7 @@ ENV APP_ENV=production
 
 ---
 
-### 9. ARG
+## 9. ARG
 
 Defines build-time variables.
 
@@ -150,9 +184,9 @@ ARG VERSION=1.0
 
 ---
 
-### 10. CMD
+## 10. CMD
 
-Provides default command to run when container starts.
+Default command executed when container starts.
 
 ```dockerfile
 CMD ["echo", "Hello World"]
@@ -160,9 +194,9 @@ CMD ["echo", "Hello World"]
 
 ---
 
-### 11. ENTRYPOINT
+## 11. ENTRYPOINT
 
-Defines the main executable that always runs when the container starts.
+Main executable that always runs.
 
 ```dockerfile
 ENTRYPOINT ["nginx"]
@@ -170,20 +204,20 @@ ENTRYPOINT ["nginx"]
 
 ---
 
-### 12. LABEL
+## 12. LABEL
 
-Adds metadata to the image.
+Adds metadata to image.
 
 ```dockerfile
 LABEL version="1.0"
-LABEL maintainer="admin@example.com"
+LABEL maintainer="Akash"
 ```
 
 ---
 
-### 13. MAINTAINER
+## 13. MAINTAINER
 
-Specifies the author of the image.
+Specifies image maintainer (deprecated but still seen).
 
 ```dockerfile
 MAINTAINER Akash
@@ -191,9 +225,9 @@ MAINTAINER Akash
 
 ---
 
-### 14. VOLUME
+## 14. VOLUME
 
-Creates and attaches a volume to the container.
+Attaches persistent storage.
 
 ```dockerfile
 VOLUME ["/data"]
@@ -201,8 +235,43 @@ VOLUME ["/data"]
 
 ---
 
-## Reference
+# Real-World Example (Nginx Static Site)
 
-* Jenkins Docker images: [https://hub.docker.com/_/jenkins/tags](https://hub.docker.com/_/jenkins/tags)
+```dockerfile
+FROM nginx:alpine
 
-``
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY nginx.conf /etc/nginx/conf.d/
+COPY dist/ /usr/share/nginx/html/
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+---
+
+# Docker Image Example (Jenkins)
+
+Docker Hub Reference:
+[https://hub.docker.com/_/jenkins/tags](https://hub.docker.com/_/jenkins/tags)
+
+---
+
+# Summary
+
+* Docker simplifies application deployment
+* Images are immutable templates
+* Containers are running instances of images
+* Dockerfile defines how images are built
+* Docker build automates image creation
+
+---
+
+# DevOps Flow
+
+```
+Code → Dockerfile → Image → Container → Deployment
+```
+```
