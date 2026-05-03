@@ -28,7 +28,8 @@ Dockerfile → Docker Image → Docker Container
 ````
 
 ---
-
+````
+````
 # Docker Images
 
 A Docker image is a set of instructions stored in layers.
@@ -38,7 +39,8 @@ A Docker image is a set of instructions stored in layers.
 - Used to create containers
 
 ---
-
+````
+````
 # Docker Containers
 
 A Docker container is a runtime instance of a Docker image.
@@ -46,9 +48,7 @@ A Docker container is a runtime instance of a Docker image.
 - Read/Write access
 - Stateful
 - Can be started, stopped, modified
-
----
-
+````
 # Docker Installation (Ubuntu)
 
 ```bash
