@@ -1,9 +1,5 @@
 # Docker Commands Cheat Sheet
 
-This document provides a complete reference of Docker commands, concepts, and real-world usage including images, containers, volumes, networking, and Docker Compose.
-
-It is designed as a **quick revision guide + interview preparation sheet** for DevOps learners.
-
 ---
 
 # 1. Build Images
