@@ -1,0 +1,11 @@
+{
+  "name": "multi-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js & python3 app.py"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
